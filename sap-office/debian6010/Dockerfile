@@ -33,5 +33,5 @@ RUN apt-get update && \
       libicu-dev \
       unixodbc-dev \
       default-jdk \
-      mysql \
+      mysql-server \
       libffi-dev
