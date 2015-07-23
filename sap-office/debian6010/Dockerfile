@@ -2,11 +2,8 @@ FROM debian:6.0.10
 
 MAINTAINER harrifeng "harrifeng@gmail.com"
 
-ENV http_proxy http://proxy.sha.sap.corp:8080
-ENV https_proxy http://proxy.sha.sap.corp:8080
-
-RUN rm /etc/apt/sources.list
-COPY sources.list.squeeze /etc/apt/sources.list
+ENV http_proxy http://proxy.sin.sap.corp:8080
+ENV https_proxy http://proxy.sin.sap.corp:8080
 
 RUN apt-get update && \
       DEBIAN_FRONTEND=noninteractive apt-get -y install \
@@ -28,9 +25,7 @@ RUN apt-get update && \
       mysql-client \
       imagemagick \
       libmagick++-dev \
-      openjdk-7-jre-headless \
       poppler-utils \
-      phantomjs \
       opensaml2-tools \
       libicu-dev \
       unixodbc-dev \
