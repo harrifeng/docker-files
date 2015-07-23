@@ -5,6 +5,9 @@ MAINTAINER harrifeng "harrifeng@gmail.com"
 ENV http_proxy http://proxy.sin.sap.corp:8080
 ENV https_proxy http://proxy.sin.sap.corp:8080
 
+COPY jsl /user/local/bin
+COPY phantomjs /user/local/bin
+
 RUN apt-get update && \
       DEBIAN_FRONTEND=noninteractive apt-get -y install \
       supervisor \
@@ -29,4 +32,6 @@ RUN apt-get update && \
       opensaml2-tools \
       libicu-dev \
       unixodbc-dev \
+      default-jdk \
+      mysql \
       libffi-dev
