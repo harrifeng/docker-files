@@ -5,6 +5,9 @@ MAINTAINER harrifeng "harrifeng@gmail.com"
 RUN rm /etc/apt/sources.list
 COPY sources.list.squeeze /etc/apt/sources.list
 
+COPY jsl /user/local/bin/jsl
+COPY phantomjs /user/local/bin/phantomjs
+
 RUN apt-get update && \
       DEBIAN_FRONTEND=noninteractive apt-get -y install \
       supervisor \
@@ -25,9 +28,8 @@ RUN apt-get update && \
       mysql-client \
       imagemagick \
       libmagick++-dev \
-      openjdk-7-jre-headless \
+      openjdk-6-jre \
       poppler-utils \
-      phantomjs \
       opensaml2-tools \
       libicu-dev \
       unixodbc-dev \
