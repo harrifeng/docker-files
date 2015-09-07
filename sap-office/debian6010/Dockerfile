@@ -5,8 +5,8 @@ MAINTAINER harrifeng "harrifeng@gmail.com"
 ENV http_proxy http://proxy.sin.sap.corp:8080
 ENV https_proxy http://proxy.sin.sap.corp:8080
 
-COPY jsl /user/local/bin/jsl
-COPY phantomjs /user/local/bin/phantomjs
+COPY jsl /usr/local/bin/jsl
+COPY phantomjs /usr/local/bin/phantomjs
 
 RUN apt-get update && \
       DEBIAN_FRONTEND=noninteractive apt-get -y install \
