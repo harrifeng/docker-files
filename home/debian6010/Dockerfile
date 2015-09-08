@@ -34,3 +34,23 @@ RUN apt-get update && \
       libicu-dev \
       unixodbc-dev \
       libffi-dev
+
+COPY ruby-2.1.5.tar.gz /root/
+
+RUN cd /root && \
+  tar -zxvf ruby-2.1.5.tar.gz && \
+  cd ruby-2.1.5 && \
+  CFLAGS="-march=native -O3" ./configure --disable-install-doc && \
+  CFLAGS="-march=native -O3" make -j 9 && \
+  make install && \
+  cd .. && \
+  rm -r ruby-2.1.5 ruby-2.1.5.tar.gz && \
+  echo 'install: --no-rdoc --no-ri' > /.gemrc && \
+  echo 'update: --no-rdoc --no-ri' >> /.gemrc
+ENV TZ US/Pacific
+
+RUN gem sources --remove https://rubygems.org/
+
+RUN gem sources -a http://ruby.taobao.org/
+
+RUN gem install bundler
