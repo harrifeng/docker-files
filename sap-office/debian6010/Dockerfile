@@ -2,8 +2,8 @@ FROM debian:6.0.10
 
 MAINTAINER harrifeng "harrifeng@gmail.com"
 
-ENV http_proxy http://proxy.sin.sap.corp:8080
-ENV https_proxy http://proxy.sin.sap.corp:8080
+ENV http_proxy http://172.28.64.41:8080
+ENV https_proxy http://172.28.64.41:8080
 
 COPY jsl /usr/local/bin/jsl
 COPY phantomjs /usr/local/bin/phantomjs
@@ -48,3 +48,6 @@ RUN curl -O http://ftp.ruby-lang.org/pub/ruby/ruby-2.1.5.tar.gz && \
   echo 'update: --no-rdoc --no-ri' >> /.gemrc
 ENV TZ US/Pacific
 RUN gem install bundler
+
+ENV DB_PWD welcomehfeng
+RUN echo 'export DB_HOST=$MYSQL_PORT_3306_TCP_ADDR' >> /root/.bashrc
