@@ -10,8 +10,8 @@ COPY phantomjs /usr/local/bin/phantomjs
 
 RUN apt-get update && \
       DEBIAN_FRONTEND=noninteractive apt-get -y install \
-      supervisor \
       openssh-server \
+      zip \
       ffmpeg \
       build-essential \
       curl \
