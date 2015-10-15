@@ -10,7 +10,6 @@ COPY phantomjs /usr/local/bin/phantomjs
 
 RUN apt-get update && \
       DEBIAN_FRONTEND=noninteractive apt-get -y install \
-      openssh-server \
       zip \
       ffmpeg \
       build-essential \
@@ -33,7 +32,6 @@ RUN apt-get update && \
       libicu-dev \
       unixodbc-dev \
       default-jdk \
-      mysql-server \
       libffi-dev
 
 RUN curl -O http://ftp.ruby-lang.org/pub/ruby/ruby-2.1.5.tar.gz && \
@@ -48,6 +46,3 @@ RUN curl -O http://ftp.ruby-lang.org/pub/ruby/ruby-2.1.5.tar.gz && \
   echo 'update: --no-rdoc --no-ri' >> /.gemrc
 ENV TZ US/Pacific
 RUN gem install bundler
-
-ENV DB_PWD welcomehfeng
-RUN echo 'export DB_HOST=$MYSQL_PORT_3306_TCP_ADDR' >> /root/.bashrc
